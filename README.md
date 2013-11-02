@@ -1,0 +1,1 @@
+Monitors when.js's unhandled rejections and returns them through a callback
