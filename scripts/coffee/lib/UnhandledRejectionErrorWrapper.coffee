@@ -6,7 +6,7 @@ module.exports = class UnhandledRejectionErrorWrapper extends Error
 
 		ref = @reason or null
 
-		@title = 'UnhandledRejectionError'
+		@wrapper = 'Unhandled rejection'
 
 		if ref.message?
 
