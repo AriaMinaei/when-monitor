@@ -1,6 +1,6 @@
 UnhandledRejectionErrorWrapper = require './UnhandledRejectionErrorWrapper'
 
-module.exports = (filterStack, unhandledMsg, reasonMsg) ->
+module.exports = (filterStack) ->
 
 	formatStackJumps = (rec) ->
 

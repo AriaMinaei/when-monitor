@@ -7,7 +7,6 @@ module.exports = (interval, cb) ->
 	stackFilter = require 'when/monitor/stackFilter'
 	logger = require('./logger')(cb)
 
-
 	mergePromiseFrames = ->
 
 		filteredFramesMsg
@@ -18,13 +17,11 @@ module.exports = (interval, cb) ->
 
 		return rx.test(line)
 
-	rejectionMsg = '--- Unhandled rejection escaped at ---'
-	reasonMsg = '--- Caused by reason ---'
 	filteredFramesMsg = '  ...[filtered frames]...'
 
 	excludeRx = /when\.js|when\/monitor\//i
 	filter = stackFilter(exclude, mergePromiseFrames)
-	reporter = simpleReporter(formatter(filter, rejectionMsg, reasonMsg), logger)
+	reporter = simpleReporter(formatter(filter), logger)
 
 	aggregator = createAggregator(throttleReporter(parseInt(interval) or 250, reporter))
 

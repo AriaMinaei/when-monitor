@@ -19,11 +19,17 @@ module.exports = class UnhandledRejectionErrorWrapper extends Error
 		# Too dirty. I'll come back to that.
 		if typeof ref is 'object'
 
-			for own prop, val of ref
+			for prop in Object.getOwnPropertyNames ref
 
 				continue if @[prop]?
 
-				@[prop] = val
+				@[prop] = ref[prop]
+
+		unless @stack?
+
+			@stack = ''
+
+		do @_fixStack
 
 		do @_complimentStack
 
@@ -48,6 +54,22 @@ module.exports = class UnhandledRejectionErrorWrapper extends Error
 		$
 	///
 
+	_fixStack: ->
+
+		return if @stack is ''
+
+		@stack = @stack
+		.split("\n")
+		.filter (l) ->
+
+			return no if l.match self._escapedStackLineToSkipRx
+
+			return yes
+
+		.join("\n")
+
+		return
+
 	_complimentStack: ->
 
 		return unless typeof @escapedAt is 'string'
@@ -68,7 +90,7 @@ module.exports = class UnhandledRejectionErrorWrapper extends Error
 
 			else
 
-				throw Error "Don't know what to do with this line: `#{line}`"
+				toAppend += '\n' + line
 
 		if toAppend.length > 0
 

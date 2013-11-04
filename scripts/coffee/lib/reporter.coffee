@@ -10,9 +10,6 @@ module.exports = (format, log) ->
 
 			return
 
-		# inspect promises
-
-
 		try
 
 			log(promises)
