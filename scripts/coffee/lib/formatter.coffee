@@ -1,3 +1,5 @@
+UnhandledRejectionErrorWrapper = require './UnhandledRejectionErrorWrapper'
+
 module.exports = (filterStack, unhandledMsg, reasonMsg) ->
 
 	formatStackJumps = (rec) ->
@@ -19,16 +21,6 @@ module.exports = (filterStack, unhandledMsg, reasonMsg) ->
 
 		return filterStack(toArray(rec.createdAt.stack).slice(1))
 
-
-	stitch = (escaped, jumps, rejected) ->
-
-		escaped = filterStack(toArray(escaped)).slice(1)
-
-		rejected = filterStack(toArray(rejected))
-
-		return [unhandledMsg].concat(escaped, jumps, reasonMsg, rejected)
-
-
 	toArray = (stack) ->
 
 		return if stack then stack.split('\n') else []
@@ -43,11 +35,10 @@ module.exports = (filterStack, unhandledMsg, reasonMsg) ->
 
 		jumps = formatStackJumps(rec)
 
-		formatted =
+		reason = rec.reason
 
-			reason: rec.reason,
-			escapedAt: rec.createdAt.stack
-			jumps: jumps
-			cause: cause
+		escapedAt = rec.createdAt.stack
+
+		formatted = new UnhandledRejectionErrorWrapper reason, escapedAt, jumps
 
 		return formatted

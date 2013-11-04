@@ -8,6 +8,8 @@ mod('monitor') 1, (rejections) ->
 
 	return
 
+UnhandledRejectionErrorWrapper = mod 'UnhandledRejectionErrorWrapper'
+
 wn = require 'when'
 
 describe "monitor"
@@ -26,6 +28,8 @@ it "should work (more or less)", ->
 		firstList.length.should.equal 1
 
 		rejection = firstList[0]
+
+		rejection.should.be.instanceOf UnhandledRejectionErrorWrapper
 
 		rejection.should.have.deep.property 'reason.message', 'a'
 
