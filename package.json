@@ -1,6 +1,6 @@
 {
   "name": "when-monitor",
-  "version": "0.1.0-beta1",
+  "version": "0.1.0",
   "description": "monitors when.js's unhandled rejections and returns them through a callback",
   "main": "scripts/js/lib/monitor.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
-    "little-popo": "~0.1.2"
+    "little-popo": "~0.1"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/AriaMinaei/when-monitor/issues"
   },
-  "peerDependencies": {
+  "dependencies": {
     "when": "~2.5.1"
   }
 }
