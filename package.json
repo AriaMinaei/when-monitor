@@ -1,6 +1,6 @@
 {
   "name": "when-monitor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "monitors when.js's unhandled rejections and returns them through a callback",
   "main": "scripts/js/lib/monitor.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "type": "git",
     "url": "https://github.com/AriaMinaei/when-monitor.git"
   },
-  "keywords": [],
+  "keywords": ["when"],
   "author": "Aria Minaei",
   "license": "MIT",
   "bugs": {
