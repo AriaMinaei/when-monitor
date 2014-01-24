@@ -1,6 +1,6 @@
 {
   "name": "when-monitor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "monitors when.js's unhandled rejections and returns them through a callback",
   "main": "scripts/js/lib/monitor.js",
   "scripts": {

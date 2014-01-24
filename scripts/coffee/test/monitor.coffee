@@ -2,7 +2,7 @@ require './_prepare'
 
 caught = []
 
-mod('monitor') 1, (rejections) ->
+mod('monitor').start 1, (rejections) ->
 
 	caught.push rejections
 

@@ -1,4 +1,4 @@
-module.exports = (interval, cb) ->
+module.exports.start = (interval, cb) ->
 
 	createAggregator = require 'when/monitor/aggregator'
 	throttleReporter = require 'when/monitor/throttledReporter'
