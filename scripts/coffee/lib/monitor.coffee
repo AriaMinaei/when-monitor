@@ -1,10 +1,10 @@
 module.exports.start = (interval, cb) ->
 
-	createAggregator = require 'when/monitor/aggregator'
-	throttleReporter = require 'when/monitor/throttledReporter'
+	createAggregator = require './aggregator'
+	throttleReporter = require './throttledReporter'
 	simpleReporter = require './reporter'
 	formatter = require './formatter'
-	stackFilter = require 'when/monitor/stackFilter'
+	stackFilter = require './stackFilter'
 	logger = require('./logger')(cb)
 
 	mergePromiseFrames = ->
